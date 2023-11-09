@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private int number;
 
     public Size(){}
@@ -18,15 +18,27 @@ public class Size {
         this.number = number;
     }
 
-    public long getId(){
-        return this.id;
+    public Long getId() {
+        return id;
     }
 
-    public void setNumber(int number){
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
         this.number = number;
     }
 
-    public int getNumber(){
-        return this.number;
+    @Override
+    public String toString() {
+        return "Size{" +
+                "id=" + id +
+                ", number=" + number +
+                '}';
     }
 }
