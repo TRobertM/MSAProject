@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.Objects;
-
 @Entity
 public class Customer {
     @Id
@@ -33,11 +31,12 @@ public class Customer {
 
     @OneToOne(mappedBy = "customer")
     private Wishlist wishlist;
+    private String role;
 
     public Customer() {
     }
 
-    public Customer(Long id, String username, String password, String email, String address, int phone, Card card, Cart cart, Wishlist wishlist) {
+    public Customer(Long id, String username, String password, String email, String address, int phone, Card card, Cart cart, Wishlist wishlist, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -47,6 +46,7 @@ public class Customer {
         this.card = card;
         this.cart = cart;
         this.wishlist = wishlist;
+        this.role = role;
     }
 
     public Long getId() {
@@ -121,31 +121,11 @@ public class Customer {
         this.wishlist = wishlist;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return phone == customer.phone && Objects.equals(id, customer.id) && Objects.equals(username, customer.username) && Objects.equals(password, customer.password) && Objects.equals(email, customer.email) && Objects.equals(address, customer.address) && Objects.equals(card, customer.card) && Objects.equals(cart, customer.cart) && Objects.equals(wishlist, customer.wishlist);
+    public String getRole() {
+        return role;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password, email, address, phone, card, cart, wishlist);
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", phone=" + phone +
-                ", card=" + card +
-                ", cart=" + cart +
-                ", wishlist=" + wishlist +
-                '}';
+    public void setRole(String role) {
+        this.role = role;
     }
 }
