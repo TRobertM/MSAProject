@@ -2,6 +2,7 @@ package com.msaproject.models;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +14,11 @@ public class Orders {
 
     private double cost;
 
-    @ManyToMany
-    @JoinTable(
-            name = "customer_order",
-            joinColumns = @JoinColumn(name = "orders_id"),
-            inverseJoinColumns = @JoinColumn(name = "customer_id")
-    )
-    private List<Customer> customers = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "order_inventory",
             joinColumns = @JoinColumn(name = "orders_id"),
@@ -29,13 +26,14 @@ public class Orders {
     )
     private List<Inventory> items = new ArrayList<>();
 
+
     public Orders() {
     }
 
-    public Orders(Long id, double cost, List<Customer> customers, List<Inventory> items) {
+    public Orders(Long id, double cost, Customer customer, List<Inventory> items) {
         this.id = id;
         this.cost = cost;
-        this.customers = customers;
+        this.customer = customer;
         this.items = items;
     }
 
@@ -55,12 +53,13 @@ public class Orders {
         this.cost = cost;
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
+
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public List<Inventory> getItems() {
@@ -69,15 +68,5 @@ public class Orders {
 
     public void setItems(List<Inventory> items) {
         this.items = items;
-    }
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "id=" + id +
-                ", cost=" + cost +
-                ", customers=" + customers +
-                ", items=" + items +
-                '}';
     }
 }

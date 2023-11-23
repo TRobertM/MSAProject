@@ -14,7 +14,7 @@ public class Cart {
     @OneToOne
     private Customer user;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "cart_inventory",
             joinColumns = @JoinColumn(name = "cart_id"),

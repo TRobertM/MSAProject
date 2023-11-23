@@ -1,9 +1,7 @@
 package com.msaproject.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.Objects;
 
@@ -13,6 +11,8 @@ public class Color {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Pattern(regexp = "^#([A-Fa-f0-9]{6})+$", message = "Invalid RGB value")
+    @Column(unique = true, nullable = false)
     private String name;
 
     public Color(){}

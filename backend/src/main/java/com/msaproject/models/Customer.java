@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Customer {
     @Id
@@ -12,6 +15,7 @@ public class Customer {
     private Long id;
 
     @NotNull
+    @Column(unique = true)
     private String username;
 
     @NotNull
@@ -19,19 +23,25 @@ public class Customer {
 
     @Email
     @NotNull
+    @Column(unique = true)
     private String email;
     private String address;
-    private int phone;
 
-    @OneToOne(mappedBy = "cardHolder")
+    @Column(unique = true)
+    private int phone;
+    private String role;
+
+    @OneToOne(mappedBy = "cardHolder", cascade = CascadeType.ALL)
     private Card card;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
 
-    @OneToOne(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Wishlist wishlist;
-    private String role;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Orders> orders = new ArrayList<>();
 
     public Customer() {
     }

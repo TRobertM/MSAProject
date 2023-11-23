@@ -1,9 +1,11 @@
 package com.msaproject.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 @Entity
 public class Card {
@@ -11,14 +13,22 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int number;
+    @Digits(integer = 16, fraction = 0)
+    @NotNull
+    private Long number;
+
+    @Digits(integer = 3, fraction = 0)
+    @NotNull
     private int cvv;
+
+    @Future
     private LocalDate expiration;
 
     @OneToOne
+    @NotNull
     private Customer cardHolder;
 
-    public Card(Long id, int number, int cvv, LocalDate expiration, Customer cardHolder) {
+    public Card(Long id, Long number, int cvv, LocalDate expiration, Customer cardHolder) {
         this.id = id;
         this.number = number;
         this.cvv = cvv;
@@ -36,11 +46,11 @@ public class Card {
         this.id = id;
     }
 
-    public int getNumber() {
+    public Long getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 
@@ -66,29 +76,5 @@ public class Card {
 
     public void setCardHolder(Customer cardHolder) {
         this.cardHolder = cardHolder;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Card card = (Card) o;
-        return number == card.number && cvv == card.cvv && Objects.equals(id, card.id) && Objects.equals(expiration, card.expiration) && Objects.equals(cardHolder, card.cardHolder);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, number, cvv, expiration, cardHolder);
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "id=" + id +
-                ", number=" + number +
-                ", cvv=" + cvv +
-                ", expiration=" + expiration +
-                ", cardHolder=" + cardHolder +
-                '}';
     }
 }
