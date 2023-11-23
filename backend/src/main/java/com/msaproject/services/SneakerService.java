@@ -25,8 +25,8 @@ public class SneakerService {
         return sneakerRepository.findById(id);
     }
 
-    public Sneaker createSneaker(Sneaker sneaker){
-        return sneakerRepository.save(sneaker);
+    public void addSneaker(Sneaker sneaker){
+        sneakerRepository.save(sneaker);
     }
 
     public void deleteSneaker(Long id){

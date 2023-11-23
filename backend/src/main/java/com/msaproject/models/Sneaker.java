@@ -2,6 +2,9 @@ package com.msaproject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +16,21 @@ public class Sneaker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String name;
+    @NotNull
     private String brand;
+    @NotNull
     private String image;
+
+    @NotNull
+    @Min(1)
     private double price;
+    private int discount;
+
+    @NotNull
+    @Pattern(regexp = "^(male|female|unisex)$", message = "Gender should be either 'male', 'female', or 'unisex'")
+    private String gender;
 
     @OneToMany(mappedBy = "sneaker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
@@ -24,11 +38,13 @@ public class Sneaker {
 
     public Sneaker(){}
 
-    public Sneaker(String name, String brand, String image, double price){
+    public Sneaker(String name, String brand, String image, double price, int discount, String gender){
         this.name = name;
         this.brand = brand;
         this.image = image;
         this.price = price;
+        this.discount = discount;
+        this.gender = gender;
     }
 
     public Long getId() {
@@ -79,28 +95,19 @@ public class Sneaker {
         this.sneakerInventory = sneakerInventory;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Sneaker sneaker = (Sneaker) o;
-        return Double.compare(sneaker.price, price) == 0 && id.equals(sneaker.id) && name.equals(sneaker.name) && Objects.equals(brand, sneaker.brand) && Objects.equals(image, sneaker.image) && Objects.equals(sneakerInventory, sneaker.sneakerInventory);
+    public int getDiscount() {
+        return discount;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, brand, image, price, sneakerInventory);
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
-    @Override
-    public String toString() {
-        return "Sneaker{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", brand='" + brand + '\'' +
-                ", image='" + image + '\'' +
-                ", price=" + price +
-                ", sneakerInventory=" + sneakerInventory +
-                '}';
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
