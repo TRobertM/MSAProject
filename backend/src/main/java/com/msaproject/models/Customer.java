@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -14,6 +15,7 @@ public class Customer {
     private Long id;
 
     @NotNull
+    @Column(unique = true)
     private String username;
 
     @NotNull
@@ -21,23 +23,30 @@ public class Customer {
 
     @Email
     @NotNull
+    @Column(unique = true)
     private String email;
     private String address;
-    private int phone;
 
-    @OneToOne(mappedBy = "cardHolder")
+    @Column(unique = true)
+    private int phone;
+    private String role;
+
+    @OneToOne(mappedBy = "cardHolder", cascade = CascadeType.ALL)
     private Card card;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
 
-    @OneToOne(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Wishlist wishlist;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Orders> orders = new ArrayList<>();
 
     public Customer() {
     }
 
-    public Customer(Long id, String username, String password, String email, String address, int phone, Card card, Cart cart, Wishlist wishlist) {
+    public Customer(Long id, String username, String password, String email, String address, int phone, Card card, Cart cart, Wishlist wishlist, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -47,6 +56,7 @@ public class Customer {
         this.card = card;
         this.cart = cart;
         this.wishlist = wishlist;
+        this.role = role;
     }
 
     public Long getId() {
@@ -121,31 +131,11 @@ public class Customer {
         this.wishlist = wishlist;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return phone == customer.phone && Objects.equals(id, customer.id) && Objects.equals(username, customer.username) && Objects.equals(password, customer.password) && Objects.equals(email, customer.email) && Objects.equals(address, customer.address) && Objects.equals(card, customer.card) && Objects.equals(cart, customer.cart) && Objects.equals(wishlist, customer.wishlist);
+    public String getRole() {
+        return role;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password, email, address, phone, card, cart, wishlist);
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", phone=" + phone +
-                ", card=" + card +
-                ", cart=" + cart +
-                ", wishlist=" + wishlist +
-                '}';
+    public void setRole(String role) {
+        this.role = role;
     }
 }

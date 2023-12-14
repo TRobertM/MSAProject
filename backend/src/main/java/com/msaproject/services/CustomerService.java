@@ -1,58 +1,56 @@
 package com.msaproject.services;
 
-import com.msaproject.DTOs.CustomerDTO;
 import com.msaproject.models.Customer;
+import com.msaproject.models.CustomerDetails;
+import com.msaproject.models.RegisterRequest;
 import com.msaproject.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
-public class CustomerService {
-    private final CustomerRepository customerRepository;
+public class CustomerService implements UserDetailsService {
+    @Autowired
+    private CustomerRepository repository;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository){
-        this.customerRepository = customerRepository;
+    private BCryptPasswordEncoder encoder;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<Customer> userDetail = repository.getCustomerByUsername(username);
+        return userDetail.map(CustomerDetails::new)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found " + username));
     }
 
-    private CustomerDTO mapToDTO(Customer customer){
-        CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setId(customer.getId());
-        customerDTO.setUsername(customer.getUsername());
-        customerDTO.setEmail(customer.getEmail());
-        customerDTO.setAddress(customer.getAddress());
-        customerDTO.setPhone(customer.getPhone());
-        return customerDTO;
+    public Optional<Customer> getCustomerByUsername(String username){
+        return repository.getCustomerByUsername(username);
     }
 
-    public List<CustomerDTO> getAllCustomers(){
-        List<Customer> customers = customerRepository.findAll();
-        return customers.stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
+    public boolean checkEmail(String email){
+        return repository.existsByEmail(email);
     }
 
-    public Optional<Customer> getCustomerById(Long id){
-        return customerRepository.findById(id);
+    public boolean checkUsername(String username){
+        return repository.existsByUsername(username);
     }
 
-    public boolean searchByName(String name){
-        return customerRepository.existsByUsername(name);
+    private Customer requestToCustomer(RegisterRequest request){
+        Customer customer = new Customer();
+        String encodedPass = encoder.encode(request.getPassword());
+        customer.setEmail(request.getEmail());
+        customer.setUsername(request.getUsername());
+        customer.setRole(request.getRole());
+        customer.setPassword(encodedPass);
+        return customer;
     }
 
-    public boolean searchByPhone(int phone){
-        return customerRepository.existsByPhone(phone);
-    }
-
-    public boolean searchByEmail(String email){
-        return customerRepository.existsByEmail(email);
-    }
-
-    public void registerCustomer(Customer customer){
-        customerRepository.save(customer);
+    public void addUser(RegisterRequest customer) {
+        repository.save(requestToCustomer(customer));
     }
 }

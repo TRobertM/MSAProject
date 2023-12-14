@@ -14,7 +14,7 @@ public class Wishlist {
     @OneToOne
     private Customer customer;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "wishlist_sneaker",
             joinColumns = @JoinColumn(name = "wishlist_id"),

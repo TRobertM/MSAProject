@@ -3,13 +3,16 @@ package com.msaproject.controllers;
 import com.msaproject.models.Sneaker;
 import com.msaproject.services.SneakerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/sneakers")
+@RequestMapping("/p/sneakers")
 public class SneakerController {
 
     private final SneakerService sneakerService;
@@ -20,22 +23,14 @@ public class SneakerController {
     }
 
     @GetMapping
-    public List<Sneaker> getAllSneakers() {
-        return sneakerService.getAllSneakers();
+    public ResponseEntity<List<Sneaker>> getSneakers(){
+        return ResponseEntity.ok(sneakerService.getAllSneakers());
     }
 
     @GetMapping("/{id}")
-    public Optional<Sneaker> getSneakerById(@PathVariable Long id){
-        return sneakerService.getSneakerById(id);
-    }
-
-    @PostMapping
-    public Sneaker createSneaker(@RequestBody Sneaker sneaker) {
-        return sneakerService.createSneaker(sneaker);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteSneaker(@PathVariable Long id) {
-        sneakerService.deleteSneaker(id);
+    public ResponseEntity<Sneaker> getSneakerById(@PathVariable Long id){
+        return sneakerService.getSneakerById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }
