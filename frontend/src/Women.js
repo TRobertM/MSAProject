@@ -69,9 +69,9 @@ function Women() {
         </button>
 
         <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+          <a href="/">Home</a>
           <a href="/Men">Men</a>
           <a href="/Women">Women</a>
-          <a href="/">Home</a>
           <a href="#">Sales</a>
           <a href="#">About Us</a>
           <a href="#">Log In</a>

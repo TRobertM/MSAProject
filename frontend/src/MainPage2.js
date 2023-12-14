@@ -67,16 +67,19 @@ function MainPage2() {
       {isSmallScreen ? (
       <>
         <button onClick={toggleSidebar} className="sidebar-toggle">
-          {isSidebarOpen ? 'Close Sidebar' : 'Open Sidebar'}
+          &#9776;
         </button>
 
         <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+          <a href="/">Home</a>
           <a href="/Men">Men</a>
           <a href="/Women">Women</a>
-          <a href="/">Home</a>
           <a href="#">Sales</a>
           <a href="#">About Us</a>
           <a href="#">Log In</a>
+          <button className="close-sidebar-button" onClick={closeSidebar}>
+              X
+            </button>
         </div>
       </>
     ) : (
