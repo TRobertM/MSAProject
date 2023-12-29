@@ -50,6 +50,15 @@ public class CustomerService implements UserDetailsService {
         return customer;
     }
 
+    public boolean updateUser(Customer customer){
+        repository.save(customer);
+        return true;
+    }
+
+    public boolean checkPhoneNumber(int phone){
+        return repository.existsByPhone(phone);
+    }
+
     public void addUser(RegisterRequest customer) {
         repository.save(requestToCustomer(customer));
     }
