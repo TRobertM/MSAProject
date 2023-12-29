@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/p/cart")
+@RequestMapping("/customer/cart")
 public class CartController {
 
     private final CartService cartService;
