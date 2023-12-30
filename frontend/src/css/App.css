@@ -63,13 +63,13 @@ body {
 
 .background-image {
   mask-image: linear-gradient(to top, transparent 0%, black 100%);
-  width: 100%; /* Make the image as wide as the screen */
-  height: auto; /* Maintain the aspect ratio */
+  width: 100%; 
+  height: auto; 
 }
 
 .header-text {
   text-align: center;
-  margin-top: 20px; /* Adjust the margin as needed */
+  margin-top: 20px;
 }
 
 .header-title {

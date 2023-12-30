@@ -1,31 +1,10 @@
-import React, { useState , useEffect} from 'react';
-import { Link } from 'react-router-dom';
-import './css/MainPage.css';
-import ShoeList from './ShoeList';
-import backgroundImage from './images/BackgroundMen.jpg';
-import nike1 from './images/nike1.jpg'
-import nike2 from './images/nike2.png'
-import nike3 from './images/nike3.jpg'
+import React, { useState, useEffect } from 'react';
+import SneakerBox from './SneakerBox';
 
-const shoes = [
-    { id: 1, name: 'Air Force 1 High', price: 799.99, image: nike1, brand: "Nike"},
-    { id: 2, name: 'Court Vision Mid', price: 449.99, image: nike2, brand: "Nike" },
-    { id: 3, name: 'SB Pogo Skate', price: 549.99, image: nike3, brand: "Nike" },
-    { id: 1, name: 'Air Force 1 High', price: 799.99, image: nike1, brand: "Nike"},
-    { id: 3, name: 'SB Pogo Skate', price: 549.99, image: nike3, brand: "Nike" },
-    { id: 2, name: 'Court Vision Mid', price: 449.99, image: nike2, brand: "Nike" },
-    { id: 2, name: 'Court Vision Mid', price: 449.99, image: nike2, brand: "Nike" },
-    { id: 1, name: 'Air Force 1 High', price: 799.99, image: nike1, brand: "Nike"},
-    { id: 3, name: 'SB Pogo Skate', price: 549.99, image: nike3, brand: "Nike" },
-    { id: 2, name: 'Court Vision Mid', price: 449.99, image: nike2, brand: "Nike" },
-    { id: 3, name: 'SB Pogo Skate', price: 549.99, image: nike3, brand: "Nike" },
-    { id: 1, name: 'Air Force 1 High', price: 799.99, image: nike1, brand: "Nike"},
-    { id: 3, name: 'SB Pogo Skate', price: 549.99, image: nike3, brand: "Nike" },
-    { id: 1, name: 'Air Force 1 High', price: 799.99, image: nike1, brand: "Nike"},
-    { id: 2, name: 'Court Vision Mid', price: 449.99, image: nike2, brand: "Nike" },
-]
+
 
 function Men() {
+  /*
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
   const [isSidebarOpen, setSidebarOpen] = useState(!isSmallScreen);
 
@@ -98,6 +77,8 @@ function Men() {
       </div>
     </div>
   );
+
+  */
 };
 
 export default Men;
