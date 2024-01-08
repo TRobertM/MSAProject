@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './css/SneakersComponent.css';
-import Footer from './Footer'
 import './css/Footer.css'
+import Footer from './Footer.js';
 
 const SneakersComponent = () => {
  const [sneakers, setSneakers] = useState([]);
  const navigate = useNavigate();
 
- const handleBoxClick = (path) => {
-  navigate(path);
+ const handleBoxClick = (path, key) => {
+  navigate(path, {state: { key: key }});
  };
 
  useEffect(() => {
@@ -31,19 +31,29 @@ const SneakersComponent = () => {
  }, []);
 
  return (
-  <div className = "back-ground">
-  <div className="sneakers-container">
-    {sneakers.map((sneaker) => (
-      <div key={sneaker.id} className="sneaker-box" onClick={() => handleBoxClick(`/${sneaker.id}`)}>
-        <img src={sneaker.image} alt={sneaker.name} className="sneaker-image" />
-        <div className="sneaker-details">
-          <h3>{sneaker.name}</h3>
-          <p>{`Price: $${sneaker.price}`}</p>
-        </div>
-      </div>
-    ))}
+  <div className="page">
+  <div className="sneaker-page">
+  <div className='header-wrapper'>
+    <div className='header-bar'>
+      <p onClick={() => handleBoxClick('/Sneakers')}>Home</p>
+      <p key='male' onClick={() => handleBoxClick('/Men', 'male')}>Men</p>
+      <p key='female' onClick={() => handleBoxClick('/Women', 'female')}>Women</p>
+    </div>
   </div>
-  <Footer/>
+    <h1 className="logo">SS</h1>
+    <div className="sneakers-container">
+      {sneakers.map((sneaker) => (
+        <div key={sneaker.id} className="sneaker-box" onClick={() => handleBoxClick(`/${sneaker.id}`, null)}>
+          <img src={sneaker.image} alt={sneaker.name} className="sneaker-image" />
+          <div className="sneaker-details">
+            <h3>{sneaker.name}</h3>
+            <p>{`Price: $${sneaker.price}`}</p>
+          </div>
+        </div>
+      ))}
+        <Footer />
+    </div>
+  </div>
   </div>
  );
 };

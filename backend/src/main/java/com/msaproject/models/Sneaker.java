@@ -110,4 +110,17 @@ public class Sneaker {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sneaker sneaker = (Sneaker) o;
+        return Double.compare(sneaker.price, price) == 0 && discount == sneaker.discount && Objects.equals(id, sneaker.id) && Objects.equals(name, sneaker.name) && Objects.equals(brand, sneaker.brand) && Objects.equals(image, sneaker.image) && Objects.equals(gender, sneaker.gender) && Objects.equals(sneakerInventory, sneaker.sneakerInventory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, brand, image, price, discount, gender, sneakerInventory);
+    }
 }

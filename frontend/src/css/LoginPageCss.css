@@ -1,0 +1,30 @@
+.authentication{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-attachment: fixed;
+}
+
+.authentication-form{
+    height: 50vh;
+    margin-top: 10%;
+    width: 100%;
+}
+
+.registration-redirect{
+    margin-top: -2%;
+}
+
+.login-button{
+    background-color: #3498db;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    border-radius: 5px;
+}

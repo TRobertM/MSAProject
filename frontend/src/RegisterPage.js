@@ -1,73 +1,89 @@
 import React, { useState } from 'react';
+import './css/RegisterPageCss.css';
 
-function RegistrationForm() {
- const [username, setUsername] = useState("");
- const [password, setPassword] = useState("");
- const [confirmPassword, setConfirmPassword] = useState("");
- const [email, setEmail] = useState("");
- const [role, setRole] = useState("ROLE_USER"); // predefined role
- const [passwordError, setPasswordError] = useState("");
+const RegisterPage = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('');
+  const [usernameError, setUsernameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
- const handleSubmit = async (event) => {
-  event.preventDefault();
+  const handleSubmit = async (event) => {
+      event.preventDefault();
+      if(password !== password2){
+        setMessage("Passwords must match");
+        setPasswordError(true);
+        setUsernameError(false);
+        setEmailError(false);
+        return;
+      }
 
-  if (password !== confirmPassword) {
-    setPasswordError("Passwords do not match!");
-    return;
-  } else {
-    setPasswordError("");
-  }
+      const response = await fetch('http://localhost:8080/register', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              username,
+              password,
+              email,
+              role: 'ROLE_USER',
+          }),
+      });
 
-  try {
-    const response = await fetch('http://localhost:8080/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        password,
-        email,
-        role
-      }),
-    });
+      const data = await response.text();
+      console.log(data);
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
+      if (data === 'Username already exists') {
+        setMessage(data);
+        setUsernameError(true);
+        return;
+      } else {
+        setUsernameError(false);
+      }
 
-    const data = await response.json();
-    alert(data);
-  } catch (error) {
-    console.error('Error:', error);
-  }
- };
+      if (data === 'Email already exists') {
+        setMessage(data);
+        setEmailError(true);
+        return;
+      } else {
+        setEmailError(false);
+      }
 
- return (
-  <div>
-    <h2>Registration Form</h2>
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <label>
-        Confirm Password:
-        <input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
-      </label>
-      <label>
-        Email:
-        <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-      </label>
-      <input type="submit" value="Register" />
-    </form>
-    {passwordError && <p>{passwordError}</p>}
-  </div>
- );
-}
+      setUsernameError(false);
+      setEmailError(false);
+      setPasswordError(false);
+      setMessage(data);
+  };
 
-export default RegistrationForm;
+  return (
+    <div className='registration'>
+    <div className='registration-form'>
+      <p className='backButton'><a className='backButtonLink' href="/Login">&lt;</a></p>
+      <form onSubmit={handleSubmit} className='register-form-input'>
+          <label>
+            <input placeholder = "Username" type="text" value={username} onChange={e => setUsername(e.target.value)} className={usernameError ? 'error' : ''} required/>
+          </label>
+          <label>
+            <input placeholder = "Password" type="password" value={password} onChange={e => setPassword(e.target.value)} className={passwordError ? 'error' : ''} required/>
+          </label>
+          <label>
+            <input placeholder = "Password again" type="password" value={password2} onChange={e => setPassword2(e.target.value)} className={passwordError ? 'error' : ''} required/>
+          </label>
+          <label>
+            <input placeholder = "Email" type="email" value={email} onChange={e => setEmail(e.target.value)} className={emailError ? 'error' : ''} required/>
+          </label>
+          <label>
+            <button type="submit" className='submit-register'>Register</button>
+          </label>
+          <p className={usernameError || emailError || passwordError ? 'error' : 'success'}>{message}</p>
+      </form>
+    </div>
+    </div>
+  );
+};
+
+export default RegisterPage;

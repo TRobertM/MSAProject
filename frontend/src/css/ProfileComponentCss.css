@@ -1,0 +1,65 @@
+.settings-box{
+    margin-top: 70px;
+    width: 85%;
+}
+
+.settings-box h1{
+    font-size: 3rem;
+}
+
+
+.profile-page{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.shipping-address-box{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.address-flex{
+    font-weight:600;
+    font-size: larger;
+    width: 50%;
+}
+
+.edit-address{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-address button {
+    background-color: transparent;
+    border: none;
+    font-weight: bolder;
+    color: rgb(192, 13, 13);
+}
+
+.input-box {
+    margin-top: 10px;
+}
+
+.address-input {
+    background-color: none;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid blue;
+    min-width: 80vw;
+}
+
+.address-text{
+    resize: vertical;
+}
+
+.address-input, .address-text {
+    font-size: 15px;
+    color: rgb(31, 31, 31);
+    padding: 0 0 0 0;
+    padding-block: 0;
+    padding-inline: 0;
+    margin: 0 0 0 0;
+    font-family: Helvetica, sans-serif;
+}

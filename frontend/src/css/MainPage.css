@@ -1,22 +1,22 @@
 @media screen and (max-width: 768px){
+  
   .start-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: 100vh;
-    background: linear-gradient(to bottom, #f2f2f2, #d2e8d2);
   }
-  
+
   .shoe-image {
     max-width: 80%;
     height: auto;
-    margin-top: 26vh;
+    margin-top: 30vh;
     z-index: 1;
   }
   
   .text-behind {
-    background: linear-gradient(to right, #8e44ad, #e74c3c);
+    background: linear-gradient(45deg, #3498db, #6c5b7b);
     -webkit-background-clip: text;
     color: transparent;
     position: absolute;
@@ -27,7 +27,7 @@
   }
   
   .text-behind-2 {
-    background: linear-gradient(to right, #8e44ad, #e74c3c);
+    background: linear-gradient(45deg, #3498db, #6c5b7b);
     -webkit-background-clip: text;
     color: transparent;
     position: absolute;
@@ -35,23 +35,24 @@
     font-family: 'Rubik Glitch', sans-serif;
     margin-top: 20px;
     z-index: 0;
-    margin-top: 47vh;
+    margin-top: 45vh;
   }
   
   .bottom-button {
-    margin-bottom: 20px;
-    background: linear-gradient(to right, #8e44ad, #e74c3c);
+    width: fit-content;
+    margin-bottom: 50px;
+    background: linear-gradient(45deg, #3498db, #6c5b7b);
     padding: 4vw 4vh; 
     border-radius: 10px; 
     color: #fff; 
     text-align: center; 
     text-decoration: none; 
-    display: inline-block; 
+    border: none;
   }
 
-  a{
-    color: #fff; 
-    text-align: center; 
-    text-decoration: none; 
+  .bottom-button a {
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
   }
 }

@@ -20,8 +20,12 @@ public class Inventory {
 
     private int quantity;
 
-    public Long getInventory_id() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Sneaker getSneaker() {

@@ -1,48 +1,104 @@
-.back-ground {
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #f2f2f2, #d2e8d2);
-}
-
 .sneakers-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
  }
 
+.page {
+  position: relative;
+  min-height: 100vh;
+}
+
+.sneaker-page {
+  padding-bottom: 60px;
+}
+
  .sneaker-box {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   box-sizing: border-box; 
   width: calc(50% - 20px); 
   margin: 10px; 
-  border: 1px solid #000; 
-  padding: 10px; 
   text-align: left; 
   font-family: Arial, sans-serif; 
  }
  
- @media (min-width: 768px) {
-  .sneaker-box {
-    font-size: 0.9em;
-  }
- }
-
- @media (min-width: 280px) and (max-width: 767px){
-  .sneaker-box {
-    font-size: 0.7em;
-  }
- }
- 
  .sneaker-image {
+  border-radius: 1.5rem;
   width: 100%;
   height: auto;
  }
  
  .sneaker-details h3 {
-  margin: 10px 0 15px 0; 
-  font-size: 1.5em; 
+  margin: 10px 0 5px 5px;
+  font-size: 5vw; 
+  color:#333333;
  }
  
  .sneaker-details p {
-  margin-top: -10px; 
-  margin-bottom: -2px;
-  font-size: 1em; 
+  font-weight: bolder;
+  margin: 0 0 5px 5px;
+  font-size: 3vw; 
+  color:#333333;
  }
+
+ .logo-container {
+  box-sizing: border-box; 
+  text-align: center;
+  padding: 10px; 
+  width: 100%;
+}
+
+.logo{
+  margin-bottom: auto;
+  margin-top: auto;
+  font-size: 10vw;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(45deg, #3498db, #6c5b7b);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: 'Rubik Glitch', sans-serif;
+}
+
+footer{
+  min-height:50px; 
+  background:black;
+}
+
+.filters{
+  display: flex;
+  justify-content: center;
+}
+
+.filter-button{
+  background: linear-gradient(to bottom right, #2767d6, #b44ec2);
+  color: white;
+  padding: 5px 10px;
+  margin: auto;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 5px;
+  width: 20%;
+}
+
+.header-bar{
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.header-bar p{
+  font-weight: bolder;
+  text-decoration: underline;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.header-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

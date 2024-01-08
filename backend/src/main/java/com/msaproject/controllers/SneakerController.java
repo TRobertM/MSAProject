@@ -1,5 +1,6 @@
 package com.msaproject.controllers;
 
+import com.msaproject.models.Inventory;
 import com.msaproject.models.Sneaker;
 import com.msaproject.services.SneakerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/p/sneakers")
@@ -28,9 +30,23 @@ public class SneakerController {
     }
 
     @GetMapping("/{id}")
+    public ResponseEntity<List<Inventory>> getSneakerVariants(@PathVariable Long id){
+        return ResponseEntity.ok(sneakerService.getSneakerVariants(id));
+    }
+
+    @GetMapping("/i/{id}")
     public ResponseEntity<Sneaker> getSneakerById(@PathVariable Long id){
-        return sneakerService.getSneakerById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Optional<Sneaker> sneaker = sneakerService.getSneakerById(id);
+        if(sneaker.isPresent()){
+            Sneaker returnedSneaker = sneaker.get();
+            return ResponseEntity.ok(returnedSneaker);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/g/{gender}")
+    public ResponseEntity<List<Sneaker>> getSneakersByGender(@PathVariable String gender){
+        return ResponseEntity.ok(sneakerService.getSneakersByGender(gender));
     }
 }

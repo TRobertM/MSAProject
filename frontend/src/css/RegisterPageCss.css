@@ -1,0 +1,83 @@
+input[type="text"].error, 
+input[type="email"].error, 
+input[type="password"].error {
+  border: 1px solid red;
+}
+
+p.error{
+  color: red;
+}
+
+label{
+  color: black;
+}
+
+h2{
+  color: black;
+}
+
+.success {
+  color: green;
+}
+
+.registration{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-attachment: fixed;
+}
+  
+.registration-form {
+  height: 80vh;
+  margin-top: 10%;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.register-form-input
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: 1px solid #ccc;
+    background: #f1f1f1;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+.submit-register {
+  background-color: #3498db; 
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 5px;
+}
+
+h2,
+label{
+  font-size: 2vw;
+}
+
+p{
+  font-size: 80%;
+}
+
+
+
+
+  

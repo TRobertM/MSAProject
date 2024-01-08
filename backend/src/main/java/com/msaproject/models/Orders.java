@@ -1,8 +1,6 @@
 package com.msaproject.models;
 
 import jakarta.persistence.*;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +23,6 @@ public class Orders {
             inverseJoinColumns = @JoinColumn(name = "inventory_id")
     )
     private List<Inventory> items = new ArrayList<>();
-
 
     public Orders() {
     }

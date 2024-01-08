@@ -31,16 +31,16 @@ public class Customer {
     private int phone;
     private String role;
 
-    @OneToOne(mappedBy = "cardHolder", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "cardHolder", cascade = CascadeType.ALL, orphanRemoval = true)
     private Card card;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private Wishlist wishlist;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Orders> orders = new ArrayList<>();
 
     public Customer() {
