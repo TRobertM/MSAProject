@@ -1,16 +1,14 @@
-.App {
-  text-align: center;
+body{
+    background: linear-gradient(45deg, #dfe6e9, #b2bec3);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a{
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.backButtonLink:visited { 
+    text-decoration: none; color:grey; 
 }
 
 .App-header {

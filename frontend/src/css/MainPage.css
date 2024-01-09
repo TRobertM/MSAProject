@@ -121,17 +121,51 @@ body {
     height: auto; /* Allow navbar to expand based on content */
   }
 
-  .navbar a {
-    margin: 5px 0; /* Adjust spacing for smaller screens */
+  .shoe-image {
+    max-width: 80%;
+    height: auto;
+    margin-top: 30vh;
+    z-index: 1;
+  }
+  
+  .text-behind {
+    background: linear-gradient(45deg, #3498db, #6c5b7b);
+    -webkit-background-clip: text;
+    color: transparent;
+    position: absolute;
+    font-size: 16vw;
+    font-family: 'Rubik Glitch', sans-serif;
+    z-index: 0;
+    margin-top: 40vh;
+  }
+  
+  .text-behind-2 {
+    background: linear-gradient(45deg, #3498db, #6c5b7b);
+    -webkit-background-clip: text;
+    color: transparent;
+    position: absolute;
+    font-size: 16vw;
+    font-family: 'Rubik Glitch', sans-serif;
+    margin-top: 20px;
+    z-index: 0;
+    margin-top: 45vh;
+  }
+  
+  .bottom-button {
+    width: fit-content;
+    margin-bottom: 50px;
+    background: linear-gradient(45deg, #3498db, #6c5b7b);
+    padding: 4vw 4vh; 
+    border-radius: 10px; 
+    color: #fff; 
+    text-align: center; 
+    text-decoration: none; 
+    border: none;
   }
 
-  .header-title {
-    font-size: 30px; /* Adjust font size for smaller screens */
-  }
-}
-
-@media only screen and (min-width: 601px) {
-  .sidebar-toggle {
-    display: none;
+  .bottom-button a {
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
   }
 }

@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface SneakerRepository extends JpaRepository<Sneaker, Long> {
     List<Sneaker> findAll();
     Optional<Sneaker> findById(Long id);
+    List<Sneaker> findSneakersByGender(String gender);
 }
