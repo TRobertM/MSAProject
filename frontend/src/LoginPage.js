@@ -41,10 +41,10 @@ const LoginPage = () => {
     <div className='authentication-form'>
         <form onSubmit={handleLogin}>
             <label>
-                <input placeholder = "Username" type="text" value={username} onChange={e => setUsername(e.target.value)} required/>
+                <input placeholder = "Username" type="text" value={username} className="username-input" onChange={e => setUsername(e.target.value)} required/>
             </label>
             <label>
-                <input placeholder = "Password" type="password" value={password} onChange={e => setPassword(e.target.value)} required/>
+                <input placeholder = "Password" type="password" value={password} className='password-input' onChange={e => setPassword(e.target.value)} required/>
             </label>
             <label>
                 <button type="submit" className='login-button'>Login</button>

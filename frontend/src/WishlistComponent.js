@@ -58,7 +58,7 @@ const WishlistComponent = () => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${jwtToken}`,
           },
-          body: JSON.stringify({sneakerToDelete}),
+          body: JSON.stringify(sneakerToDelete),
         }
       );
   

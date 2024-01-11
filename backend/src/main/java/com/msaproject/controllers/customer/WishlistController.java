@@ -88,8 +88,6 @@ public class WishlistController {
 
     @DeleteMapping("/remove-from-wishlist")
     public ResponseEntity<String> removeFromWishlist(@RequestBody Sneaker sneaker){
-        System.out.println(sneaker.getId());
-        System.out.println(sneaker.getName());
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String username = authentication.getName();
