@@ -11,10 +11,118 @@ a{
     text-decoration: none; color:grey; 
 }
 
-.backButton {
-    position: absolute;
-    top: -3vw;
-    left: 3vw;
-    font-weight: bolder;
-    font-size: 5vw;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  background-color: black;
+  padding: 0 20px;
+  border-bottom: 2px solid rgb(145, 145, 145);
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.background-image {
+  mask-image: linear-gradient(to top, transparent 0%, black 100%);
+  width: 100%; /* Make the image as wide as the screen */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+.header-text {
+  text-align: center;
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.header-title {
+  font-size: 70px;
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.image-fade {
+  mask-image: linear-gradient(to top, transparent 0%, black 100%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  background-color: black;
+  padding: 0 20px;
+  border-bottom: 2px solid rgb(145, 145, 145);
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.background-image {
+  mask-image: linear-gradient(to top, transparent 0%, black 100%);
+  width: 100%; /* Make the image as wide as the screen */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+.header-text {
+  text-align: center;
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.header-title {
+  font-size: 70px;
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.image-fade {
+  mask-image: linear-gradient(to top, transparent 0%, black 100%);
 }
