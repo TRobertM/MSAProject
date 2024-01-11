@@ -1,119 +1,117 @@
 .cart-page{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .cart-box {
-    display: flex;
-    border: 1px solid #ddd; 
-    border-radius: 20px;
-    align-items: center;
-  }
+  display: flex;
+  border: 1px solid #ddd; 
+  border-radius: 20px;
+  align-items: center;
+}
 
-  .cart-box:first-child{
-    margin-top: 60px;
-  }
+.cart-box:first-child{
+  margin-top: 60px;
+}
 
-  .cart-box{
-    margin: 0px 10px 20px 10px;
-    background-color: white;
-  }
-  
-  .sneaker-image-cart {
-    flex-grow: 1;
-    border-radius: 20px 0px 0px 20px;
-    max-width: 25%; 
-    margin-right: 10px; 
-  }
-  
-  .sneaker-details-cart {
-    flex-grow: 2;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .sneaker-details-cart h3 {
-    margin: 0;
-  }
-  
-  .sneaker-details-cart p {
-    margin: 5px 0;
-  }
+.cart-box{
+  margin: 0px 10px 20px 10px;
+  background-color: white;
+}
 
-  .cart-circle{
-    height: 12px;
-    border-radius: 50%;
-    margin-top: 7px;
-    border: none;
-    display: inline;
-  }
+.sneaker-image-cart {
+  flex-grow: 1;
+  border-radius: 20px 0px 0px 20px;
+  max-width: 25%; 
+  margin-right: 10px; 
+}
 
-  .cart-h3{
-    width: 38%;
-  }
+.sneaker-details-cart {
+  flex-grow: 2;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .cart-color{
-    width: 62%;
-  }
+.sneaker-details-cart h3 {
+  margin: 0;
+}
 
-  .cart-price{
-    width: 100%;
-    margin-top: -5px;
-  }
+.sneaker-details-cart p {
+  margin: 5px 0;
+}
 
-  .cart-size{
-    margin-top: -10px;
-  }
+.cart-circle{
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 7px;
+  border: none;
+  display: inline;
+}
 
-  .cart-price p, .cart-size p{
-    font-weight: bold;
-  }
+.cart-h3{
+  width: 38%;
+}
 
-  .cart-buttons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-  }
+.cart-color{
+  width: 62%;
+}
 
-  .cart-buttons p{
-    font-size: larger;
-    font-weight: bolder;
-  }
+.cart-price{
+  width: 100%;
+  margin-top: -5px;
+}
 
-  .items-box{
-    border-bottom: 1px solid rgb(14, 14, 14);
-    margin: 0 15px 0 15px;
-  }
+.cart-size{
+  margin-top: -10px;
+}
 
-  .price-box{
-    margin: 0 15px 0 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
+.cart-price p, .cart-size p{
+  font-weight: bold;
+}
 
-  .price-box h2{
-    font-size: larger;
-  }
+.cart-buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
 
-  .price-box p{
-    font-size: medium;
-    font-weight: bold;
-  }
+.cart-buttons p{
+  font-size: larger;
+  font-weight: bolder;
+}
 
-  .order-button{
-    margin-top: auto;
-    margin-bottom: 30px;
-    width: 70%;
-    align-self: center;
-    border: none;
-    background-color: #3498db; 
-    border-radius: 25px;
-    padding: 15px 65px;
-    font-size: 15px;
-    color: white;
-  }
-  
+.items-box{
+  border-bottom: 1px solid rgb(14, 14, 14);
+  margin: 0 15px 0 15px;
+}
 
+.price-box{
+  margin: 0 15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.price-box h2{
+  font-size: larger;
+}
+
+.price-box p{
+  font-size: medium;
+  font-weight: bold;
+}
+
+.order-button{
+  margin-top: auto;
+  margin-bottom: 30px;
+  width: 70%;
+  align-self: center;
+  border: none;
+  background-color: #3498db; 
+  border-radius: 25px;
+  padding: 15px 65px;
+  font-size: 15px;
+  color: white;
+}

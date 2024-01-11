@@ -28,7 +28,6 @@ const ProfileComponent = () => {
       const data = await response.json();
       setUser(data);
       setAddress(data.address);
-      console.log(data.address);
     } catch (error) {
       console.error('Error fetching customer settings:', error);
     }
